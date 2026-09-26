@@ -1,0 +1,8 @@
+{
+  "_comment": "Edit this file to register every way you send things. The guard already knows Gmail, Beeper and any MCP tool whose name contains send/post/reply/forward/schedule/publish/comment/draft. Add your own send scripts (substring of the command) and any outbound MCP tool with an unusual name.",
+  "outbound_command_markers": [],
+  "outbound_mcp_tools": [],
+  "outbound_mcp_regex": "",
+  "bot_marker": "",
+  "bot_marker_tools": []
+}

@@ -1,0 +1,25 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python tests/test_scanner.py
+      - run: python tests/test_guard.py
+      - name: No networking code in hooks, tools or installer
+        run: |
+          ! grep -rnE "import (urllib|socket|http|requests|smtplib|ftplib)|from (urllib|http|socket)" hooks tools install.py
